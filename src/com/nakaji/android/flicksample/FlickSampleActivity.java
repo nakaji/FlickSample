@@ -97,6 +97,10 @@ public class FlickSampleActivity extends Activity {
         listView02 = (ListView) findViewById(R.id.ListView02);
         listView03 = (ListView) findViewById(R.id.ListView03);
 
+        setFlick(new View[] { listView01, listView02, listView03 });
+    }
+
+    private void setFlick(View[] views) {
         viewFlipper = (ViewFlipper) findViewById(R.id.ViewFlipper);
 
         gestureDetecotr = new GestureDetector(this, gestureListener);
@@ -106,9 +110,12 @@ public class FlickSampleActivity extends Activity {
         inFromRight = AnimationUtils.loadAnimation(this, R.anim.in_from_right);
         outToLeft = AnimationUtils.loadAnimation(this, R.anim.out_to_left);
 
-        listView01.setOnTouchListener(touchListener);
-        listView02.setOnTouchListener(touchListener);
-        listView03.setOnTouchListener(touchListener);
+        for (View v : views) {
+            v.setOnTouchListener(touchListener);
+        }
+    }
+
+    private class FlickUtils {
 
     }
 
