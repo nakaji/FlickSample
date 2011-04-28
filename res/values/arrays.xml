@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array
+		name="data01">
+		<item>view01</item>
+	</string-array>
+	<string-array
+		name="data02">
+		<item>view02</item>
+	</string-array>
+	<string-array
+		name="data03">
+		<item>view03</item>
+	</string-array>
+</resources>

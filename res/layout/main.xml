@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<ViewFlipper
+		android:id="@+id/ViewFlipper"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<ListView
+			android:id="@+id/ListView01"
+			android:entries="@array/data01"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="@string/hello1" />
+		<ListView
+			android:id="@+id/ListView02"
+			android:entries="@array/data02"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="@string/hello2" />
+		<ListView
+			android:id="@+id/ListView03"
+			android:entries="@array/data03"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="@string/hello3"
+		/>
+	</ViewFlipper>
+
+
+</LinearLayout>

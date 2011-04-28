@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello1">Hello World, FlickSampleActivity! screen1</string>
+    <string name="hello2">Hello World, FlickSampleActivity! screen2</string>
+    <string name="hello3">Hello World, FlickSampleActivity! screen3</string>
+    <string name="app_name">FlickSample</string>
+</resources>
