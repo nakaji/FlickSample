@@ -21,6 +21,8 @@ public class FlickUtil {
     Animation inFromRight;
     Animation outToLeft;
 
+    SetDataLogic setDataLogic;
+
     // ジェスチャーリスナー
     OnGestureListener gestureListener = new OnGestureListener() {
         @Override
@@ -56,6 +58,7 @@ public class FlickUtil {
                     viewFlipper.setOutAnimation(outToLeft);
                     viewFlipper.showNext();
                 }
+                setDataLogic.setData();
                 return true;
             }
 
@@ -72,7 +75,6 @@ public class FlickUtil {
     OnTouchListener touchListener = new OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            Log.d("Chapter06", "onTouch : " + v.toString());
             if (gestureDetecotr.onTouchEvent(event)) {
                 return true;
             }
@@ -97,4 +99,11 @@ public class FlickUtil {
         }
     }
 
+    public void setDataLogic(SetDataLogic logic) {
+        setDataLogic = logic;
+    }
+
+    public interface SetDataLogic {
+        public void setData();
+    }
 }
