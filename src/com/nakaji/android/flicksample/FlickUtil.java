@@ -13,14 +13,11 @@ import android.widget.ViewFlipper;
 
 public class FlickUtil {
     ViewFlipper viewFlipper;
-
     GestureDetector gestureDetecotr;
-
     Animation inFromLeft;
     Animation outToRight;
     Animation inFromRight;
     Animation outToLeft;
-
     SetDataLogic setDataLogic;
 
     // ジェスチャーリスナー
@@ -47,18 +44,21 @@ public class FlickUtil {
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             float dx = Math.abs(velocityX);
             float dy = Math.abs(velocityY);
-            Log.d("Chapter06", "onFling : (" + dx + "," + dy + ")");
+
             if (dx > dy && dx > 150) {
                 if (e1.getX() < e2.getX()) {
                     viewFlipper.setInAnimation(inFromLeft);
                     viewFlipper.setOutAnimation(outToRight);
                     viewFlipper.showPrevious();
+                    setDataLogic.leftToRightLogic();
                 } else {
                     viewFlipper.setInAnimation(inFromRight);
                     viewFlipper.setOutAnimation(outToLeft);
                     viewFlipper.showNext();
+                    setDataLogic.rightToLeftLogic();
                 }
-                setDataLogic.setData();
+                setDataLogic.setDataLogic();
+                Log.d("BBT", "OnGestureListener.onFling");
                 return true;
             }
 
@@ -83,7 +83,6 @@ public class FlickUtil {
     };
 
     public void setOnTouchListener(Context context, ViewFlipper flipper) {
-
         viewFlipper = flipper;
         gestureDetecotr = new GestureDetector(context, gestureListener);
 
@@ -103,7 +102,16 @@ public class FlickUtil {
         setDataLogic = logic;
     }
 
+    /***
+     * フリックに関する処理に関するインタフェース
+     * @author nakaji
+     *
+     */
     public interface SetDataLogic {
-        public void setData();
+        public void setDataLogic();
+
+        public void rightToLeftLogic();
+
+        public void leftToRightLogic();
     }
 }

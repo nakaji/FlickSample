@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
@@ -30,12 +31,27 @@ public class FlickSampleActivity extends Activity {
         ((ListView) findViewById(R.id.ListView02)).setOnItemClickListener(onItemClickListener);
         ((ListView) findViewById(R.id.ListView03)).setOnItemClickListener(onItemClickListener);
 
+        ((ListView) findViewById(R.id.ListView01)).setOnItemLongClickListener(onItemLongClickListener);
+        ((ListView) findViewById(R.id.ListView02)).setOnItemLongClickListener(onItemLongClickListener);
+        ((ListView) findViewById(R.id.ListView03)).setOnItemLongClickListener(onItemLongClickListener);
+
         futil.setDataLogic(new SetDataLogic() {
             @Override
-            public void setData() {
+            public void setDataLogic() {
                 View v = viewFlipper.getCurrentView();
-                Log.d("FlickSample", "SetDataLogic.setData : " + v.toString());
+                Log.d("FlickSample", "SetDataLogic.setDataLogic : " + v.toString());
+            }
 
+            @Override
+            public void rightToLeftLogic() {
+                View v = viewFlipper.getCurrentView();
+                Log.d("FlickSample", "SetDataLogic.rightToLeftLogic : " + v.toString());
+            }
+
+            @Override
+            public void leftToRightLogic() {
+                View v = viewFlipper.getCurrentView();
+                Log.d("FlickSample", "SetDataLogic.leftToRightLogic : " + v.toString());
             }
         });
     }
@@ -44,6 +60,14 @@ public class FlickSampleActivity extends Activity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int arg2, long arg3) {
             Log.d("FlickSample", "onItemClick : " + view.toString());
+        }
+    };
+
+    private OnItemLongClickListener onItemLongClickListener = new OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            Log.d("FlickSample", "onItemLongClick : " + arg1.toString());
+            return false;
         }
     };
 
