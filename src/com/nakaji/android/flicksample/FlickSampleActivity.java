@@ -10,7 +10,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
-import com.nakaji.android.flicksample.FlickUtil.SetDataLogic;
+import com.nakaji.android.flicksample.FlickUtil.FlickLogic;
 
 public class FlickSampleActivity extends Activity {
 
@@ -35,7 +35,7 @@ public class FlickSampleActivity extends Activity {
         ((ListView) findViewById(R.id.ListView02)).setOnItemLongClickListener(onItemLongClickListener);
         ((ListView) findViewById(R.id.ListView03)).setOnItemLongClickListener(onItemLongClickListener);
 
-        futil.setDataLogic(new SetDataLogic() {
+        futil.setDataLogic(new FlickLogic() {
             @Override
             public void setDataLogic() {
                 View v = viewFlipper.getCurrentView();

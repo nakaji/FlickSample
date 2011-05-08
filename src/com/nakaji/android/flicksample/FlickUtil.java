@@ -18,7 +18,7 @@ public class FlickUtil {
     Animation outToRight;
     Animation inFromRight;
     Animation outToLeft;
-    SetDataLogic setDataLogic;
+    FlickLogic setDataLogic;
 
     // ジェスチャーリスナー
     OnGestureListener gestureListener = new OnGestureListener() {
@@ -98,7 +98,7 @@ public class FlickUtil {
         }
     }
 
-    public void setDataLogic(SetDataLogic logic) {
+    public void setDataLogic(FlickLogic logic) {
         setDataLogic = logic;
     }
 
@@ -107,7 +107,7 @@ public class FlickUtil {
      * @author nakaji
      *
      */
-    public interface SetDataLogic {
+    public interface FlickLogic {
         public void setDataLogic();
 
         public void rightToLeftLogic();
