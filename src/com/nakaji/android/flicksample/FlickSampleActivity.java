@@ -22,11 +22,6 @@ public class FlickSampleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        viewFlipper = (ViewFlipper) findViewById(R.id.ViewFlipper);
-
-        FlickUtil futil = new FlickUtil();
-        futil.setOnTouchListener(this, viewFlipper);
-
         ((ListView) findViewById(R.id.ListView01)).setOnItemClickListener(onItemClickListener);
         ((ListView) findViewById(R.id.ListView02)).setOnItemClickListener(onItemClickListener);
         ((ListView) findViewById(R.id.ListView03)).setOnItemClickListener(onItemClickListener);
@@ -35,7 +30,9 @@ public class FlickSampleActivity extends Activity {
         ((ListView) findViewById(R.id.ListView02)).setOnItemLongClickListener(onItemLongClickListener);
         ((ListView) findViewById(R.id.ListView03)).setOnItemLongClickListener(onItemLongClickListener);
 
-        futil.setDataLogic(new FlickLogic() {
+        viewFlipper = (ViewFlipper) findViewById(R.id.ViewFlipper);
+
+        new FlickUtil(this, viewFlipper, new FlickLogic() {
             @Override
             public void setDataLogic() {
                 View v = viewFlipper.getCurrentView();

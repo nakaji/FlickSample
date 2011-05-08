@@ -82,7 +82,13 @@ public class FlickUtil {
         }
     };
 
-    public void setOnTouchListener(Context context, ViewFlipper flipper) {
+    /***
+     * コンストラクタ
+     * @param context
+     * @param flipper
+     * @param logic
+     */
+    public FlickUtil(Context context, ViewFlipper flipper, FlickLogic logic) {
         viewFlipper = flipper;
         gestureDetecotr = new GestureDetector(context, gestureListener);
 
@@ -91,19 +97,33 @@ public class FlickUtil {
         inFromRight = AnimationUtils.loadAnimation(context, R.anim.in_from_right);
         outToLeft = AnimationUtils.loadAnimation(context, R.anim.out_to_left);
 
-        // FiewFlipperの子に対して、OnTouchListenerを割り当てる
+        setOnTouchListener(context, flipper);
+        setDataLogic(logic);
+    }
+
+    /***
+     * ViewFlipperの子ViewにOnTouchListenerを設定する
+     * @param context
+     * @param flipper
+     */
+    private void setOnTouchListener(Context context, ViewFlipper flipper) {
         int child_count = viewFlipper.getChildCount();
         for (int i = 0; i < child_count; i++) {
             viewFlipper.getChildAt(i).setOnTouchListener(touchListener);
         }
     }
 
-    public void setDataLogic(FlickLogic logic) {
+    /***
+     * setDataLogicを設定する
+     * @param logic
+     */
+    private void setDataLogic(FlickLogic logic) {
         setDataLogic = logic;
     }
 
     /***
      * フリックに関する処理に関するインタフェース
+     *
      * @author nakaji
      *
      */
