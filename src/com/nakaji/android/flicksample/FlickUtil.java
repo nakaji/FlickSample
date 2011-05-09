@@ -75,10 +75,7 @@ public class FlickUtil {
     OnTouchListener touchListener = new OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            if (gestureDetecotr.onTouchEvent(event)) {
-                return true;
-            }
-            return false;
+            return gestureDetecotr.onTouchEvent(event);
         }
     };
 
